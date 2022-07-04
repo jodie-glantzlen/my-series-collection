@@ -1,37 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { getSeries } from '../apis/seriesApi'
+import React from 'react'
+import Collection from './Collection'
+import Wishlist from './Wishlist'
+
 
 function App() {
-
-  const [series, setSeries] = useState([])
-
-  useEffect(() => {
-    refreshSeries()
-  }, [])
-
-  const refreshSeries = () => {
-    getSeries()
-      .then((res) => {
-        setSeries(res)
-      })
-      .catch(err => console.log(err))
-  }
-
   return (
-    <>
-      <header className="header">
-        <h1>My Collection</h1>
-      </header>
-      <section className="main">
-        {
-          series.map((item) => {
-            return (
-              <p key={item.id}>{item.title} by {item.author}</p>
-            )
-          })
-        }
-      </section>
-    </>
+    <div>
+      <h1>SERIES!</h1>
+      <Collection />
+      <Wishlist />
+    </div>
   )
 }
 
