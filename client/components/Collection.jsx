@@ -26,11 +26,11 @@ function Collection () {
         {
           series.map((item) => {
             return (
-              <Item key={item.id} data={item} refreshSeries={refreshSeries} />
+              <Item key={item.id} data={item} />
             )
           })
         }
-        <AddItem refreshSeries={refreshSeries}/>
+        <AddItem />
       </section>
     </>
   )}
