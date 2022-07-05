@@ -1,8 +1,44 @@
-import React from "react"
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { addSeries } from "../actions/seriesActions"
 
-function AddItem() {
+function AddItem({refreshSeries}) {
+
+  const dispatch = useDispatch()
+
+  const [formData, setFormData] = useState({
+    title: '',
+    author: ''
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]:e.target.value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const newSeries = formData
+    dispatch(addSeries(newSeries))
+    refreshSeries()
+  }
+
   return (
-    <h2>Form to add new item goes here</h2>
+    <div>
+      <h3>Add new series</h3>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="title">Title:
+          <input type="text" name="title" onChange={handleChange} />
+        </label>
+        <label htmlFor="author">Author:
+          <input type="text" name="author" onChange={handleChange} />
+        </label>
+        <button onClick={handleSubmit}>Done!</button>
+      </form>
+    </div>
+
   )
 }
 

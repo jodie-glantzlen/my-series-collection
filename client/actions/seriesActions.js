@@ -28,3 +28,12 @@ export function getSeries() {
   }
 }
 
+export function addSeries(newSeries) {
+  return (dispatch) => {
+    postNewSeries(newSeries)
+    .then((res) => {
+      dispatch(sendSeries(res))
+    })
+    .catch(err => console.log(err.message))
+  }
+}

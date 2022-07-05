@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import Item from './Item'
 import { getSeries } from '../actions/seriesActions'
 import { useDispatch, useSelector } from "react-redux"
+import AddItem from "./AddItem"
 
 function Collection () {
   const dispatch = useDispatch()
@@ -29,6 +30,7 @@ function Collection () {
             )
           })
         }
+        <AddItem refreshSeries={refreshSeries}/>
       </section>
     </>
   )}
