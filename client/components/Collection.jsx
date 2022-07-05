@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react"
-import { getSeries } from '../apis/seriesApi'
+import React, { useEffect } from "react"
 import Item from './Item'
+import { fetchSeries } from '../actions/seriesActions'
+import { useDispatch, useSelector } from "react-redux"
 
 function Collection () {
-  const [series, setSeries] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     refreshSeries()
   }, [])
   
   const refreshSeries = () => {
-    getSeries()
-      .then((res) => {
-        setSeries(res)
-      })
-      .catch(err => console.log(err))
+    dispatch(fetchSeries())
   }
+
+  const series = useSelector(state => state.seriesReducer)
   
   return (
     <>
