@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Item from './Item'
-import { fetchSeries } from '../actions/seriesActions'
+import { getSeries } from '../actions/seriesActions'
 import { useDispatch, useSelector } from "react-redux"
 
 function Collection () {
@@ -11,7 +11,7 @@ function Collection () {
   }, [])
   
   const refreshSeries = () => {
-    dispatch(fetchSeries())
+    dispatch(getSeries())
   }
 
   const series = useSelector(state => state.seriesReducer)

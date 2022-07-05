@@ -1,6 +1,7 @@
-import { getSeries } from '../apis/seriesApi'
+import { fetchSeries, postNewSeries } from '../apis/seriesApi'
 
 export const RECEIVE_SERIES = 'RECEIVE_SERIES'
+export const SEND_SERIES = 'SEND_SERIES'
 // to make sure they match
 
 export function receiveSeries(seriesArr) {
@@ -10,12 +11,20 @@ export function receiveSeries(seriesArr) {
   }
 }
 
-export function fetchSeries() {
+export function sendSeries(newSeries) {
+  return {
+    type: SEND_SERIES,
+    payload: newSeries
+  }
+}
+
+export function getSeries() {
   return (dispatch) => {
-    getSeries()
+    fetchSeries()
     .then((seriesArr) => {
       dispatch(receiveSeries(seriesArr))
     })
     .catch(err => console.log(err.message))
   }
 }
+
