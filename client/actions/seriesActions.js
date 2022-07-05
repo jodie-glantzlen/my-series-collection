@@ -1,8 +1,11 @@
-import { fetchSeries, postNewSeries } from '../apis/seriesApi'
+import { fetchSeries, postNewSeries, deleteSeries } from '../apis/seriesApi'
 
 export const RECEIVE_SERIES = 'RECEIVE_SERIES'
 export const SEND_SERIES = 'SEND_SERIES'
+export const DEL_SERIES = 'DEL_SERIES'
 // to make sure they match
+
+// ACTIONS
 
 export function receiveSeries(seriesArr) {
   return {
@@ -18,9 +21,18 @@ export function sendSeries(newSeries) {
   }
 }
 
+export function delSeries(seriesId) {
+  return {
+    type: DEL_SERIES,
+    payload: seriesId
+  }
+}
+
+// THUNKS
+
 export function getSeries() {
   return (dispatch) => {
-    fetchSeries()
+    fetchSeries() // from api
     .then((seriesArr) => {
       dispatch(receiveSeries(seriesArr))
     })
@@ -30,9 +42,19 @@ export function getSeries() {
 
 export function addSeries(newSeries) {
   return (dispatch) => {
-    postNewSeries(newSeries)
+    postNewSeries(newSeries) //from api
     .then((res) => {
       dispatch(sendSeries(res))
+    })
+    .catch(err => console.log(err.message))
+  }
+}
+
+export function removeSeries(seriesId) {
+  return (dispatch) => {
+    deleteSeries(seriesId) // from api
+    .then(() => {
+      dispatch(delSeries(seriesId))
     })
     .catch(err => console.log(err.message))
   }

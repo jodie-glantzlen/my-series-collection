@@ -6,11 +6,21 @@ function selectSeries(db = connection) {
   return db('series').select()
 }
 
+function selectSeriesById(id, db = connection) {
+  return db('series').select().where('id', id).first()
+}
+
 function insertNewSeries(newSeries, db = connection) {
   return db('series').insert(newSeries)
 }
 
+function deleteSeries(id, db = connection) {
+  return db('series').where('id', id).del()
+}
+
 module.exports = {
   selectSeries,
-  insertNewSeries
+  selectSeriesById,
+  insertNewSeries,
+  deleteSeries
 }

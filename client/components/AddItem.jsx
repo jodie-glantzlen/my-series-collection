@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { addSeries } from "../actions/seriesActions"
 
-function AddItem({refreshSeries}) {
+function AddItem() {
 
   const dispatch = useDispatch()
 
@@ -22,7 +22,6 @@ function AddItem({refreshSeries}) {
     e.preventDefault()
     const newSeries = formData
     dispatch(addSeries(newSeries))
-    refreshSeries()
   }
 
   return (

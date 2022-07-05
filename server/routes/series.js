@@ -7,7 +7,7 @@ const db = require('../db/series')
 router.get('/', (req, res) => {
   db.selectSeries()
   .then((series) => {
-    console.log('GET route from server-side: ', series)
+    //console.log('GET route from server-side: ', series)
     res.json(series)
   })
   .catch((err) => {
@@ -17,11 +17,33 @@ router.get('/', (req, res) => {
 
 // POST /api/v1/series
 router.post('/', (req, res) => {
-  const newSeries = req.body
-  console.log('POST route from server-side: ', newSeries)
+  const { title, author } = req.body
+  const newSeries = {
+    title,
+    author
+  }
+
+  //console.log('POST route from server-side: ', newSeries)
+
   db.insertNewSeries(newSeries)
-  .then((newSeriesId) => {
-    res.json(newSeriesId)
+  .then((IdArr) => {
+    const newSeriesId = IdArr[0]
+    return db.selectSeriesById(newSeriesId)
+  })
+  .then((newSeries) => {
+    res.json(newSeries)
+  })
+  .catch((err) => {
+    res.status(500).send(err.message)
+  })
+})
+
+// DELETE /api/v1/series/:id
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteSeries(id)
+  .then(() => {
+    res.json('delete successful!')
   })
   .catch((err) => {
     res.status(500).send(err.message)

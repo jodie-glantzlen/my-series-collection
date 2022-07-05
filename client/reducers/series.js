@@ -1,4 +1,4 @@
-import { RECEIVE_SERIES, SEND_SERIES } from '../actions/seriesActions'
+import { RECEIVE_SERIES, SEND_SERIES, DEL_SERIES } from '../actions/seriesActions'
 
 const seriesReducer = (state = [], action) => {
   const { type, payload } = action
@@ -8,6 +8,8 @@ const seriesReducer = (state = [], action) => {
       return payload
     case SEND_SERIES:
       return [... state, payload]
+    case DEL_SERIES:
+      return state.filter((item) => item.id !== payload)
     default:
       return state
   }
