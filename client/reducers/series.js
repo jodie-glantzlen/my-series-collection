@@ -12,8 +12,11 @@ const seriesReducer = (state = [], action) => {
       return state.filter((item) => item.id !== payload)
     case MODIFY_SERIES:
       return state.map((item) => {
-        item.title = payload.title
-        item.author = payload.author
+        if (item.id === payload.selectedSeriesId) {
+          item.title = payload.changes.title,
+          item.author = payload.changes.author
+        }
+        return item
       })
     default:
       return state

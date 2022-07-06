@@ -21,6 +21,8 @@ export function deleteSeries(id) {
 }
 
 export function patchSeries(id, details) {
+  // details is an object like this: 
+  // { title: updated value, author: updated value}
   return request
   .patch(`/api/v1/series/${id}`)
   .send(details)

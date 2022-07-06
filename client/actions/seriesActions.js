@@ -29,15 +29,21 @@ export function delSeries(seriesId) {
   }
 }
 
-export function modifySeries(selectedSeriesId, changes) {
+export function modifySeries(selectedSeriesId, changes, newTitle, newAuthor) {
+  console.log('newtitle: ', newTitle) // logs undefined
+  console.log('newauthor:', newAuthor) // logs undefined
   return {
     type: MODIFY_SERIES,
     payload: {
       selectedSeriesId,
-      changes
+      changes: {
+        title: newTitle,
+        author: newAuthor
+      }
+
+      }
     }
   }
-}
 
 // THUNKS
 
@@ -74,8 +80,10 @@ export function removeSeries(seriesId) {
 export function editSeries(selectedSeriesId, changes) {
   return (dispatch) => {
     patchSeries(selectedSeriesId, changes)
-    .then((res) => {
-      dispatch(modifySeries(res))
+    .then((updatedSeries) => {
+      const newTitle = updatedSeries.title
+      const newAuthor = updatedSeries.author
+      dispatch(modifySeries(selectedSeriesId, changes, newTitle, newAuthor))
     })
     .catch(err => console.log(err.message))
   }

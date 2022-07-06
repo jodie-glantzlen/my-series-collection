@@ -23,9 +23,8 @@ function Item({ data }) {
   const getContent = () => {
     if (editMode) {
       return <UpdateItem
-        id={data.id}
+        itemId={data.id}
         endEditMode={() => setEditMode(false)}
-        {...{ data }}
       />
     } else {
       return (

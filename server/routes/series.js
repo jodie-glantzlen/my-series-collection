@@ -64,6 +64,7 @@ router.patch('/:id', (req, res) => {
     return db.selectSeriesById(id)
   })
   .then((updatedSeries) => {
+    console.log(updatedSeries)
     res.json(updatedSeries)
   })
   .catch((err) => {
