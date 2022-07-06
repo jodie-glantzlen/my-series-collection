@@ -30,8 +30,8 @@ export function delSeries(seriesId) {
 }
 
 export function modifySeries(selectedSeriesId, changes, newTitle, newAuthor) {
-  console.log('newtitle: ', newTitle) // logs undefined
-  console.log('newauthor:', newAuthor) // logs undefined
+  console.log('newtitle: ', newTitle)
+  console.log('newauthor:', newAuthor)
   return {
     type: MODIFY_SERIES,
     payload: {
@@ -40,6 +40,8 @@ export function modifySeries(selectedSeriesId, changes, newTitle, newAuthor) {
         title: newTitle,
         author: newAuthor
       }
+
+      // TODO: refactor because it doesn't look right
 
       }
     }
@@ -84,6 +86,7 @@ export function editSeries(selectedSeriesId, changes) {
       const newTitle = updatedSeries.title
       const newAuthor = updatedSeries.author
       dispatch(modifySeries(selectedSeriesId, changes, newTitle, newAuthor))
+      // TODO: refactor 
     })
     .catch(err => console.log(err.message))
   }
