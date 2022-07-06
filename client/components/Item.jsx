@@ -6,13 +6,13 @@ import UpdateItem from "./UpdateItem"
 
 function Item({ data }) {
 
+  const dispatch = useDispatch()
+
   const [editMode, setEditMode] = useState(false)
 
   const toggleEditMode = () => {
     setEditMode(!editMode)
   }
-
-  const dispatch = useDispatch()
 
   const handleDelete = () => {
     dispatch(removeSeries(data.id))

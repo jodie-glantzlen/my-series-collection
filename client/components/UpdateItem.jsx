@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { editSeries } from "../actions/seriesActions"
 
-function UpdateItem({data}) {
+function UpdateItem({data, endEditMode}) {
 
   const dispatch = useDispatch()
 
@@ -21,7 +21,12 @@ function UpdateItem({data}) {
   const handleSubmit = (e) => {
     e.preventDefault()
     const updatedSeries = formData
+    console.log(updatedSeries)
     dispatch(editSeries(updatedSeries))
+    .then(() => {
+      endEditMode()
+    })
+    .catch(err => console.log(err.message))
   }
 
   return (
