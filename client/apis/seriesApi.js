@@ -19,3 +19,10 @@ export function deleteSeries(id) {
   .delete(`/api/v1/series/${id}`)
   .then(() => id)
 }
+
+export function patchSeries(id, details) {
+  return request
+  .patch(`/api/v1/series/${id}`)
+  .send(details)
+  .then((res) => res.body)
+}

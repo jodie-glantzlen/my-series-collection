@@ -50,5 +50,26 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+// PATCH /api/v1/series/:id
+router.patch('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const { title, author } = req.body
+  const changes = {
+    title,
+    author
+  }
+  
+  db.updateSeries(id, changes)
+  .then(() => {
+    return db.selectSeriesById(id)
+  })
+  .then((updatedSeries) => {
+    res.json(updatedSeries)
+  })
+  .catch((err) => {
+    res.status(500).send(err.message)
+  })
+})
+
 
 module.exports = router

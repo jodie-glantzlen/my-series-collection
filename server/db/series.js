@@ -18,9 +18,14 @@ function deleteSeries(id, db = connection) {
   return db('series').where('id', id).del()
 }
 
+function updateSeries(id, details, db = connection) {
+  return db('series').where('id', id).update(details)
+}
+
 module.exports = {
   selectSeries,
   selectSeriesById,
   insertNewSeries,
-  deleteSeries
+  deleteSeries,
+  updateSeries
 }

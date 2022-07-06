@@ -1,8 +1,9 @@
-import { fetchSeries, postNewSeries, deleteSeries } from '../apis/seriesApi'
+import { fetchSeries, postNewSeries, deleteSeries, patchSeries } from '../apis/seriesApi'
 
 export const RECEIVE_SERIES = 'RECEIVE_SERIES'
 export const SEND_SERIES = 'SEND_SERIES'
 export const DEL_SERIES = 'DEL_SERIES'
+export const MODIFY_SERIES = 'MODIFY_SERIES'
 // to make sure they match
 
 // ACTIONS
@@ -25,6 +26,16 @@ export function delSeries(seriesId) {
   return {
     type: DEL_SERIES,
     payload: seriesId
+  }
+}
+
+export function modifySeries(selectedSeriesId, changes) {
+  return {
+    type: MODIFY_SERIES,
+    payload: {
+      selectedSeriesId,
+      changes
+    }
   }
 }
 
@@ -55,6 +66,16 @@ export function removeSeries(seriesId) {
     deleteSeries(seriesId) // from api
     .then(() => {
       dispatch(delSeries(seriesId))
+    })
+    .catch(err => console.log(err.message))
+  }
+}
+
+export function editSeries(selectedSeriesId, changes) {
+  return (dispatch) => {
+    patchSeries(selectedSeriesId, changes)
+    .then((res) => {
+      dispatch(modifySeries(res))
     })
     .catch(err => console.log(err.message))
   }
