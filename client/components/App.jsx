@@ -5,10 +5,18 @@ import Wishlist from './Wishlist'
 
 function App() {
   return (
-    <div>
-      <h1>SERIES!</h1>
-      <Collection />
-      <Wishlist />
+    <div className='hero-body'>
+      <h1 className='title has-text-centered'>SERIES!</h1>
+      <div className="container">
+        <div className="columns">
+          <div className="column is-6">
+            <Collection />
+          </div>
+          <div className='column is-6'>
+            <Wishlist />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -30,18 +30,24 @@ function Item({ data }) {
       return (
         <div>
           <p>{data.title} by {data.author}</p>
-          <button onClick={handleDelete}>Delete from collection</button>
+          <div className="field-is-grouped">
+            <div className="control">
+              <button onClick={handleDelete}>Delete</button>
+            </div>
+          </div>
         </div>
       )
     }
   }
 
   return <>
-  {getContent()}
-  <button onClick={toggleEditMode}>
-    {editMode ? "Cancel" : "Update"}
-  </button>
-</>
+    {getContent()}
+    <div className="control">
+      <button onClick={toggleEditMode}>
+        {editMode ? "Cancel" : "Update"}
+      </button>
+    </div>
+  </>
 
 }
 

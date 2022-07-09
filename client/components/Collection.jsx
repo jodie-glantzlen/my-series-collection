@@ -20,8 +20,9 @@ function Collection () {
   return (
     <>
       <header className="header">
-        <h2>My Collection</h2>
+        <h2 className="has-text-centered">My Collection</h2>
       </header>
+      <AddItem />
       <section className="main">
         {
           series.map((item) => {
@@ -30,7 +31,6 @@ function Collection () {
             )
           })
         }
-        <AddItem />
       </section>
     </>
   )}

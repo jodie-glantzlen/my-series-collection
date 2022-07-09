@@ -14,7 +14,7 @@ function AddItem() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]:e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -25,18 +25,25 @@ function AddItem() {
   }
 
   return (
-    <div>
-      <h3>Add new series</h3>
+    <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:
-          <input type="text" name="title" onChange={handleChange} />
-        </label>
-        <label htmlFor="author">Author:
-          <input type="text" name="author" onChange={handleChange} />
-        </label>
-        <button onClick={handleSubmit}>Done!</button>
+        <div className="field">
+          <label htmlFor="title" className="label">Title</label>
+          <div className="control">
+            <input className="input is-small is-rounded" type="text" onChange={handleChange} />
+          </div>
+        </div>
+        <div className="field">
+          <label htmlFor="author" className="label">Author</label>
+          <div className="control">
+            <input className="input is-small is-rounded" type="text" onChange={handleChange} />
+          </div>
+        </div>
+          <div className="control">
+            <button onClick={handleSubmit}>Add</button>
+          </div>
       </form>
-    </div>
+    </>
 
   )
 }

@@ -1,14 +1,10 @@
 import React from "react"
 
-function Wishlist () {
+function Wishlist() {
   return (
     <>
-    <header>
-    <h2>My Wishlist</h2>
-    </header>
-    <section>
+      <h2>My Wishlist</h2>
       <p>Stuff incoming</p>
-    </section>
     </>
   )
 }
