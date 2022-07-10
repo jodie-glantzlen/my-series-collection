@@ -20,7 +20,7 @@ function Item({ data }) {
     // I don't need this because redux does it for me in the global state?
   }
 
-  const getContent = () => {
+  const displayContent = () => {
     if (editMode) {
       return <UpdateItem
         itemId={data.id}
@@ -28,12 +28,10 @@ function Item({ data }) {
       />
     } else {
       return (
-        <div>
+        <div className="collection-item">
           <p>{data.title} by {data.author}</p>
-          <div className="field-is-grouped">
-            <div className="control">
-              <button onClick={handleDelete}>Delete</button>
-            </div>
+          <div className="control">
+            <button className="button is-small is-light is-rounded" onClick={handleDelete}>Delete</button>
           </div>
         </div>
       )
@@ -41,9 +39,9 @@ function Item({ data }) {
   }
 
   return <>
-    {getContent()}
+    {displayContent()}
     <div className="control">
-      <button onClick={toggleEditMode}>
+      <button className="button is-small is-light is-rounded" onClick={toggleEditMode}>
         {editMode ? "Cancel" : "Update"}
       </button>
     </div>

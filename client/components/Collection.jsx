@@ -23,7 +23,7 @@ function Collection () {
         <h2 className="has-text-centered">My Collection</h2>
       </header>
       <AddItem />
-      <section className="main">
+      <section className="collection-content">
         {
           series.map((item) => {
             return (

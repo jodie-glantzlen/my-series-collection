@@ -7,4 +7,22 @@
 //   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 // }
 
+.columns {
+  display: flex;
+  justify-content: space-between;
+}
 
+.level-item {
+  display: block;
+}
+
+.collection-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 10px;
+}
+
+.collection-item {
+  margin-top: 20px;
+}

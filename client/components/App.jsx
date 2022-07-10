@@ -9,10 +9,10 @@ function App() {
       <h1 className='title has-text-centered'>SERIES!</h1>
       <div className="container">
         <div className="columns">
-          <div className="column is-6">
+          <div className="column is-4">
             <Collection />
           </div>
-          <div className='column is-6'>
+          <div className='column is-4'>
             <Wishlist />
           </div>
         </div>

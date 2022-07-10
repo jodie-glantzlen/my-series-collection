@@ -28,20 +28,22 @@ function AddItem() {
     <>
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label htmlFor="title" className="label">Title</label>
+          <label htmlFor="title" className="label is-small">Title</label>
           <div className="control">
             <input className="input is-small is-rounded" name="title" type="text" onChange={handleChange} />
           </div>
         </div>
         <div className="field">
-          <label htmlFor="author" className="label">Author</label>
+          <label htmlFor="author" className="label is-small">Author</label>
           <div className="control">
             <input className="input is-small is-rounded" name="author" type="text" onChange={handleChange} />
           </div>
         </div>
+        <div className="field">
           <div className="control">
-            <button onClick={handleSubmit}>Add</button>
+            <button className="button is-small is-light is-rounded is-focused" onClick={handleSubmit}>Add</button>
           </div>
+        </div>
       </form>
     </>
 

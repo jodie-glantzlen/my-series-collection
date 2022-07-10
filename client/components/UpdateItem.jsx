@@ -35,7 +35,7 @@ function UpdateItem({itemId, endEditMode}) {
       <label htmlFor="author">Author:
         <input type="text" name="author" onChange={handleChange} />
       </label>
-      <button onClick={handleSubmit}>Done!</button>
+      <button className="button is-small is-light is-rounded" onClick={handleSubmit}>Done!</button>
     </form>
   </div>
   )
