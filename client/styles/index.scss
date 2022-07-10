@@ -12,10 +12,6 @@
   justify-content: space-between;
 }
 
-.level-item {
-  display: block;
-}
-
 .collection-content {
   display: flex;
   flex-direction: column;
@@ -24,5 +20,13 @@
 }
 
 .collection-item {
+  margin-top: 20px;
+}
+
+.button {
+  margin-left: 10px;
+}
+
+.submit-form {
   margin-top: 20px;
 }

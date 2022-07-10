@@ -23,16 +23,14 @@ function Item({ data }) {
   const displayContent = () => {
     if (editMode) {
       return <UpdateItem
-        itemId={data.id}
         endEditMode={() => setEditMode(false)}
+        {...{data}}
       />
     } else {
       return (
         <div className="collection-item">
-          <p>{data.title} by {data.author}</p>
-          <div className="control">
-            <button className="button is-small is-light is-rounded" onClick={handleDelete}>Delete</button>
-          </div>
+          <span>{data.title} by {data.author}</span>
+          <span><button className="button is-small is-light is-rounded" onClick={handleDelete}>❌</button></span>
         </div>
       )
     }

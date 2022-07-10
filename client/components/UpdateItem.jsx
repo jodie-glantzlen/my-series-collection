@@ -2,19 +2,19 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { editSeries } from "../actions/seriesActions"
 
-function UpdateItem({itemId, endEditMode}) {
+function UpdateItem({ endEditMode, data }) {
 
   const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
-    title: '',
-    author: ''
+    title: data.title,
+    author: data.author
   })
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]:e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -22,22 +22,40 @@ function UpdateItem({itemId, endEditMode}) {
     e.preventDefault()
     const updatedSeries = formData
     console.log(updatedSeries)
-    dispatch(editSeries(itemId, updatedSeries))
+    dispatch(editSeries(data.id, updatedSeries))
     endEditMode()
   }
 
   return (
     <div>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title:
-        <input type="text" name="title" onChange={handleChange} />
-      </label>
-      <label htmlFor="author">Author:
-        <input type="text" name="author" onChange={handleChange} />
-      </label>
-      <button className="button is-small is-light is-rounded" onClick={handleSubmit}>Done!</button>
-    </form>
-  </div>
+      <form onSubmit={handleSubmit} className="submit-form">
+        <div className="field">
+          <label htmlFor="title" className="label is-small">Title</label>
+          <div className="control">
+            <input
+              className="input is-small is-rounded"
+              name="title"
+              type="text"
+              value={formData.title}
+              onChange={handleChange} />
+          </div>
+        </div>
+        <div className="field">
+          <label htmlFor="author" className="label is-small">Author</label>
+          <div className="control">
+            <input
+              className="input is-small is-rounded"
+              name="author"
+              type="text"
+              value={formData.author}
+              onChange={handleChange} />
+          </div>
+        </div>
+        <div className="field">
+          <button className="button is-small is-light is-rounded" type="submit">Done!</button>
+        </div>
+      </form>
+    </div>
   )
 }
 
