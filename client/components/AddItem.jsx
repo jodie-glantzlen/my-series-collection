@@ -30,13 +30,13 @@ function AddItem() {
         <div className="field">
           <label htmlFor="title" className="label">Title</label>
           <div className="control">
-            <input className="input is-small is-rounded" type="text" onChange={handleChange} />
+            <input className="input is-small is-rounded" name="title" type="text" onChange={handleChange} />
           </div>
         </div>
         <div className="field">
           <label htmlFor="author" className="label">Author</label>
           <div className="control">
-            <input className="input is-small is-rounded" type="text" onChange={handleChange} />
+            <input className="input is-small is-rounded" name="author" type="text" onChange={handleChange} />
           </div>
         </div>
           <div className="control">
