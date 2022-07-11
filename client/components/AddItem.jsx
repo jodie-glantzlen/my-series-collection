@@ -18,30 +18,19 @@ function AddItem() {
     })
   }
 
-  // const resetFormData = () => {
-  //   const clearFormData = {
-  //     title: '',
-  //     author: ''
-  //   }
-  //   setFormData(clearFormData)
-  // }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     const newSeries = formData
     dispatch(addSeries(newSeries))
-    // resetFormData() --> doesn't work
-
-    // setFormData({
-    //   title: '',
-    //   author: ''
-    // })
-    // --> doesn't work either
+    setFormData({
+      title: '',
+      author: ''
+    })
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} name="addForm">
         <div className="field">
           <label htmlFor="title" className="label is-small">Title</label>
           <div className="control">
@@ -49,7 +38,10 @@ function AddItem() {
               className="input is-small is-rounded"
               name="title"
               type="text"
-              onChange={handleChange} />
+              onChange={handleChange}
+              value={formData.title}
+              />
+              
           </div>
         </div>
         <div className="field">
@@ -59,7 +51,9 @@ function AddItem() {
               className="input is-small is-rounded"
               name="author"
               type="text"
-              onChange={handleChange} />
+              onChange={handleChange} 
+              value={formData.author}
+              />
           </div>
         </div>
         <div className="field">
