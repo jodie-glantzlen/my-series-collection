@@ -29,23 +29,12 @@ export function delSeries(seriesId) {
   }
 }
 
-export function modifySeries(selectedSeriesId, changes, newTitle, newAuthor) {
-  console.log('newtitle: ', newTitle)
-  console.log('newauthor:', newAuthor)
+export function modifySeries(series) {
   return {
     type: MODIFY_SERIES,
-    payload: {
-      selectedSeriesId,
-      changes: {
-        title: newTitle,
-        author: newAuthor
-      }
-
-      // TODO: refactor because it doesn't look right
-
-      }
-    }
+    payload: series
   }
+}
 
 // THUNKS
 
@@ -83,10 +72,7 @@ export function editSeries(selectedSeriesId, changes) {
   return (dispatch) => {
     patchSeries(selectedSeriesId, changes)
     .then((updatedSeries) => {
-      const newTitle = updatedSeries.title
-      const newAuthor = updatedSeries.author
-      dispatch(modifySeries(selectedSeriesId, changes, newTitle, newAuthor))
-      // TODO: refactor 
+      dispatch(modifySeries(updatedSeries))
     })
     .catch(err => console.log(err.message))
   }

@@ -41,7 +41,6 @@ function AddItem() {
               onChange={handleChange}
               value={formData.title}
               />
-              
           </div>
         </div>
         <div className="field">
