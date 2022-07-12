@@ -1,21 +1,14 @@
 import React from 'react'
+import AddItem from './AddItem'
 import Collection from './Collection'
-import Wishlist from './Wishlist'
-
 
 function App() {
   return (
     <div className='hero-body'>
-      <h1 className='title has-text-centered'>SERIES!</h1>
-      <div className="container">
-        <div className="columns">
-          <div className="column is-4">
-            <Collection />
-          </div>
-          <div className='column is-4'>
-            <Wishlist />
-          </div>
-        </div>
+      <h1 className='title has-text-centered'>My Series Collection</h1>
+      <div className="main-container">
+        <AddItem />
+        <Collection />
       </div>
     </div>
   )

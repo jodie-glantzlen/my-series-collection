@@ -57,7 +57,7 @@ function AddItem() {
         </div>
         <div className="field">
           <div className="control">
-            <button className="button is-small is-light is-rounded is-focused" type="submit">Add</button>
+            <button className="button is-small is-white is-rounded" type="submit">Add to Collection</button>
           </div>
         </div>
       </form>

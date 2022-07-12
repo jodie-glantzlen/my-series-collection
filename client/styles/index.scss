@@ -1,15 +1,22 @@
-// body {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   margin: 0;
-//   padding: 20px;
-//   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-// }
+body {
+  height: 100vh;
+  background-color: #FCF8E8;
+}
 
-.columns {
+.title {
+  border-style: solid;
+  border-radius: 50px;
+  height: 10vh;
+  padding-top: 10px;
+  background-color: #CEE5D0;
+}
+
+.main-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .collection-content {
@@ -17,6 +24,10 @@
   flex-direction: column;
   align-items: flex-start;
   row-gap: 10px;
+
+  h2 {
+    font-weight: bold;
+  }
 }
 
 .collection-item {
@@ -29,4 +40,8 @@
 
 .submit-form {
   margin-top: 20px;
+}
+
+.button {
+  border-style: solid 1px;
 }

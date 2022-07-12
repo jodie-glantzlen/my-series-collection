@@ -52,7 +52,7 @@ function UpdateItem({ endEditMode, data }) {
           </div>
         </div>
         <div className="field">
-          <button className="button is-small is-light is-rounded" type="submit">Done!</button>
+          <button className="button is-small is-white is-rounded" type="submit">Done!</button>
         </div>
       </form>
     </div>
