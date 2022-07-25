@@ -1,6 +1,9 @@
 # Fullstack Collection App
 
-This is a minimalist app I created to practice the full stack cycle and CRUD operations. To use it, please do the following:
+This is a minimalist app I created to practice the full stack cycle and CRUD operations. 
+You can add, update or delete a series.
+
+To use it, please do the following:
 
 ```
 npm install
